@@ -1,42 +1,59 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import google from '../../../assets/Icons/google Icon.png'
-import authImg from '../../../assets/auth image/login-logo.png'
+
+import signImg from '../../../assets/animals/Banner/banner-6.png'
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const SignUp = () => {
+ 
+  
+  const navigate= useNavigate();
+  const {createUser,updateUser,googleSign} = useContext(AuthContext);
     const signUpHandle = event =>{
         event.preventDefault();
         const form = event.target;
         const name= form.name.value;
         const email= form.email.value;
+        const photo = form.photo.value;
         const password = form.password.value;
-        console.log(name,email,password);
+        console.log(name,email,photo,password);
     
-    //     createUser(email,password)
-    //     .then(res => {
-    //       const signedUser = res.user;
-    //       userUpdate(signedUser,name)
-    //       console.log(signedUser);
-    //       form.reset()
-    //       navigate('/login')
-    //   })
-    //   .catch(error=>console.log(error))
+        createUser(email,password)
+        .then(res => {
+          const signedUser = res.user;
+          updateUser(signedUser,name,photo)
+          console.log(signedUser);
+          toast.success("Successfully Signed Up")
+          form.reset()
+          navigate('/login')
+      })
+      .catch(err=>{console.log(err)
+       
+      toast.error('Sign Up Unsuccessful')})
     }
     const googleHandle=()=>{
-    //   googleUser()
-    //   .then(res=>{
-    //     const signedUser = res.user;
-    //     console.log(signedUser);
-    //     navigate('/')
-    //   })
+      googleSign()
+      .then(res=>{
+        const signedUser = res.user;
+        console.log(signedUser);
+        toast.success("Successfully Signed Up")
+        navigate('/')
+      })
+      .catch(err=>{console.log(err)
+        
+        toast.error('Sign Up Unsuccessful')})
     }
     return (
         <>
-        <div className="hero h-[150px]" style={{ backgroundImage: `url('${authImg}')` }}>
-  <div className="hero-overlay bg-opacity-70"></div>
+        <div className="hero h-[300px]" style={{ backgroundImage: `url('${signImg}')` }}>
+  <div className="hero-overlay bg-opacity-50"></div>
   <div className="hero-content text-center text-neutral-content">
     <div className="max-w-md">
-      <h1 className="mb-5 text-4xl font-bold">Please Register</h1>
+      <h1 className="mb-5 text-4xl font-bold text-slate-950">Please Register</h1>
     
     </div>
   </div>
@@ -90,7 +107,9 @@ const SignUp = () => {
              
              </div>
            </div>
-         </div></>
+         </div>
+         
+         </>
     );
 };
 
