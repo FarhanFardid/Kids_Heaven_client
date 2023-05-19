@@ -79,7 +79,7 @@ const Navigation = () => {
                     {
                       user ? <><li>
                       <Link to="/"><button>My Toys</button></Link></li> <li>
-                      <Link to="/"><button>Add A Toy</button></Link></li></>  : <li></li>
+                      <Link to="/ "><button>Add A Toy</button></Link></li></>  : <li></li>
                       
                     }
                 
