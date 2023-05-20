@@ -50,14 +50,14 @@ const Navigation = () => {
                      
                     </li>
                     <li>
-                    <Link to='/'>  All Toys </Link>
+                    <Link to='/allToy'>  All Toys </Link>
                      
                     </li>
         
                     {
                       user ? <><li>
-                      <Link to="/"><button>My Toys</button></Link></li> <li>
-                      <Link to="/"><button>Add A Toy</button></Link></li></>  : <li></li>
+                      <Link to="/myToy"><button>My Toys</button></Link></li> <li>
+                      <Link to="/addToy"><button>Add A Toy</button></Link></li></>  : <li></li>
                       
                     }
                   
@@ -78,14 +78,14 @@ const Navigation = () => {
                      
                     </li>
                     <li>
-                    <Link to='/'>  All Toys </Link>
+                    <Link to='/allToy'>  All Toys </Link>
                      
                     </li>
         
                     {
                       user ? <><li>
-                      <Link to="/"><button>My Toys</button></Link></li> <li>
-                      <Link to="/"><button>Add A Toy</button></Link></li></>  : <li></li>
+                      <Link to="/myToy"><button>My Toys</button></Link></li> <li>
+                      <Link to="/addToy"><button>Add A Toy</button></Link></li></>  : <li></li>
                       
                     }
                 
